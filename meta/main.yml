@@ -1,0 +1,11 @@
+galaxy_info:
+  author: Elnur Abdurrakhimov
+  description: Inits EC2
+  license: MIT
+  min_ansible_version: 1.5
+  platforms:
+    - name: Ubuntu
+  galaxy_tags:
+    - aws
+    - ec2
+dependencies: []

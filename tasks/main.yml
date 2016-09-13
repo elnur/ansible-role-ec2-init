@@ -1,0 +1,22 @@
+- name: Create instance
+  ec2:
+    image: "{{ ec2_ami }}"
+    instance_type: "{{ ec2_instance_type }}"
+    assign_public_ip: no
+    group_id: "{{ ec2_groups }}"
+    keypair: "{{ ec2_keypair }}"
+    wait: no
+    region: "{{ aws_region }}"
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+  register: ec2
+
+- name: Wait for SSH
+  wait_for:
+    host: "{{ ec2.instances[0].private_ip }}"
+    port: 22
+
+- name: Add instance to Ansible groups
+  add_host:
+    groups: "{{ ansible_groups }}"
+    name: "{{ ec2.instances[0].private_ip }}"
