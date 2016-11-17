@@ -5,7 +5,7 @@
     assign_public_ip: no
     group_id: "{{ ec2_groups }}"
     keypair: "{{ ec2_keypair }}"
-    wait: no
+    wait: yes
     region: "{{ aws_region }}"
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
