@@ -15,6 +15,7 @@
   wait_for:
     host: "{{ ec2.instances[0].private_ip }}"
     port: 22
+    delay: 60
 
 - name: Add instance to Ansible groups
   add_host:
