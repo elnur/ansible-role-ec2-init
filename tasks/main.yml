@@ -5,6 +5,8 @@
     assign_public_ip: no
     group_id: "{{ ec2_groups }}"
     keypair: "{{ ec2_keypair }}"
+    instance_tags:
+      - Name: "{{ ec2_base_name|replace('-', ' ')|title }} Deployment"
     wait: yes
     region: "{{ aws_region }}"
     aws_access_key: "{{ aws_access_key }}"
