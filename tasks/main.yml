@@ -20,8 +20,7 @@
 
 - name: Wait for cloud-init to update APT sources
   wait_for:
-    path: /var/log/cloud-init.log
-    search_regex: config-apt-configure ran successfully
+    path: /run/cloud-init/result.json
 
 - name: Add instance to Ansible groups
   add_host:
