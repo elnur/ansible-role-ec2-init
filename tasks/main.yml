@@ -19,6 +19,11 @@
     port: 22
     delay: 90
 
+- name: Wait for cloud-init to update APT sources
+  wait_for:
+    path: /var/log/cloud-init.log
+    search_regex: /etc/apt/sources.list
+
 - name: Add instance to Ansible groups
   add_host:
     groups: "{{ ansible_groups }}"
