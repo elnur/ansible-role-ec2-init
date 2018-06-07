@@ -17,7 +17,6 @@
   wait_for:
     host: "{{ ec2.instances[0].private_ip }}"
     port: 22
-    delay: 90
 
 - name: Wait for cloud-init to update APT sources
   wait_for:
