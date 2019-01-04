@@ -1,4 +1,4 @@
 aws_region: us-east-1
-ec2_instance_type: t2.micro
+ec2_instance_type: t3.micro
 ec2_ami: ami-a4dc46db
 ansible_groups: app
