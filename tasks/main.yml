@@ -2,6 +2,7 @@
   ec2:
     image: "{{ ec2_ami }}"
     instance_type: "{{ ec2_instance_type }}"
+    vpc_subnet_id: "{{ ec2_private_subnets[0] }}"
     assign_public_ip: no
     group_id: "{{ ec2_groups }}"
     keypair: "{{ ec2_keypair }}"
