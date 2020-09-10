@@ -19,15 +19,6 @@
     host: "{{ ec2.instances[0].private_ip }}"
     port: 22
 
-- name: Install Python
-  raw: apt update && apt install python -y
-  delegate_to: "ubuntu@{{ ec2.instances[0].private_ip }}"
-  become: yes
-  retries: 5
-  delay: 10
-  register: result
-  until: result is succeeded
-
 - name: Add instance to Ansible groups
   add_host:
     groups: "{{ ansible_groups }}"
