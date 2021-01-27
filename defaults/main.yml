@@ -1,5 +1,5 @@
 aws_region: us-east-1
 ec2_instance_type: t3.micro
-ec2_ami: ami-04b9e92b5572fa0d1
+ec2_ami: ami-0885b1f6bd170450c
 ec2_private_subnets: []
 ansible_groups: app
