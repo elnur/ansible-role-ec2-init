@@ -1,12 +1,13 @@
 - name: Create instance
-  ec2:
-    image: "{{ ec2_ami }}"
+  ec2_instance:
+    image_id: "{{ ec2_ami }}"
     instance_type: "{{ ec2_instance_type }}"
     vpc_subnet_id: "{{ ec2_private_subnets[0] }}"
-    assign_public_ip: no
-    group_id: "{{ ec2_groups }}"
-    keypair: "{{ ec2_keypair }}"
-    instance_tags:
+    network:
+      assign_public_ip: no
+    security_groups: "{{ ec2_groups }}"
+    key_name: "{{ ec2_keypair }}"
+    tags:
       Name: "{{ ec2_base_name|replace('-', ' ')|title }} Deployment"
     wait: yes
     region: "{{ aws_region }}"
@@ -16,10 +17,10 @@
 
 - name: Wait for SSH
   wait_for:
-    host: "{{ ec2.instances[0].private_ip }}"
+    host: "{{ ec2.instances[0].private_ip_address }}"
     port: 22
 
 - name: Add instance to Ansible groups
   add_host:
     groups: "{{ ansible_groups }}"
-    name: "{{ ec2.instances[0].private_ip }}"
+    name: "{{ ec2.instances[0].private_ip_address }}"
