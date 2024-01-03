@@ -2,7 +2,7 @@
   ec2_instance:
     image_id: "{{ ec2_ami }}"
     instance_type: "{{ ec2_instance_type }}"
-    vpc_subnet_id: "{{ ec2_private_subnets[0] }}"
+    vpc_subnet_id: "{{ ec2_private_subnets|first }}"
     network:
       assign_public_ip: no
     security_groups: "{{ ec2_groups }}"
