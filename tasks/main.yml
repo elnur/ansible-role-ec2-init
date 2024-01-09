@@ -7,6 +7,7 @@
       assign_public_ip: no
     security_groups: "{{ ec2_groups }}"
     key_name: "{{ ec2_keypair }}"
+    ebs_optimized: yes
     tags:
       Name: "{{ ec2_base_name|replace('-', ' ')|title }} Deployment"
     wait: yes
